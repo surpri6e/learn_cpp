@@ -4,7 +4,7 @@ using namespace std;
 int main() {
 
     while(true) {
-        cout << "surpri6e\n";
+        cout << "surpri6e!!!\n";
     }
 
 
