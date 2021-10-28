@@ -11,16 +11,15 @@ int main() {
     cout << "Enter your second number: ";
     cin >> b;
 
-    while (a != 0 && b != 0) {
-        if (a > b) {
-            a = a % b;
-        } else {
-            b %= a;
-        }
+    while (b != 0) {
+        a %= b;
+        auto tmp = a;
+        a = b;
+        b = tmp;
         cout << "a = " << a << ", b = " << b << '\n';
     }
 
-    cout << "NOD = " << a + b << ".\n";
+    cout << "NOD = " << a << ".\n";
 
     return 0;
 }
