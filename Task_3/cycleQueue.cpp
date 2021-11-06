@@ -13,7 +13,7 @@ int main() {
 
     int current;
     int numberLeavingQueue = 0;
-    int minFromBypassedNumbers = 10001;
+    int minFromBypassedNumbers = 10007;
 
     int N = 0;
     cout << "How numbers will be in subsequence: ";
@@ -42,7 +42,7 @@ int main() {
                 minProduction = pairProduction;
         }
 
-        if(pairProduction == INT_MAX)
+        if(pairProduction == INT_MAX || minProduction % 10007 == 0)
             cout << "Your primary have not solution => -1!\n";
         else if (minProduction >= 1 && minProduction < INT_MAX)
             cout << "Min Production = " << minProduction << ".\n";
