@@ -8,7 +8,7 @@ int main() {
     int queueArray[queueArray_size];
     int N = 10;
     int maxSum = -1;
-    int pairSum;
+    int pairSum = -1;
     int numberLeavingQueue;
     int current;
     int maxFromBypassedNumbers = -1;
