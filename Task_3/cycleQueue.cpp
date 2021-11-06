@@ -19,33 +19,37 @@ int main() {
     cout << "How numbers will be in subsequence: ";
     cin >> N;
 
-    for(int i = 0; i < arr_size; i++)
-        cin >> arr[i];
+    if(N >= 7) {
+        for(int i = 0; i < arr_size; i++)
+            cin >> arr[i];
 
+        for(int i = arr_size; i < N; i++){
+            cin >> current;
 
-    for(int i = arr_size; i < N; i++){
-        cin >> current;
+            numberLeavingQueue = arr[arr_end];
+            arr[arr_end++] = current;
 
-        numberLeavingQueue = arr[arr_end];
-        arr[arr_end++] = current;
+            if(arr_end > arr_size)
+                arr_end = 0;
 
-        if(arr_end > arr_size)
-            arr_end = 0;
+            if(numberLeavingQueue % 2 != 0 && numberLeavingQueue < minFromBypassedNumbers)
+                minFromBypassedNumbers = numberLeavingQueue;
 
-        if(numberLeavingQueue % 2 != 0 && numberLeavingQueue < minFromBypassedNumbers)
-            minFromBypassedNumbers = numberLeavingQueue;
+            if(current % 2 != 0)
+                pairProduction = minFromBypassedNumbers * current;
 
-        if(current % 2 != 0)
-            pairProduction = minFromBypassedNumbers * current;
+            if(pairProduction < minProduction)
+                minProduction = pairProduction;
+        }
 
-        if(pairProduction < minProduction)
-            minProduction = pairProduction;
+        if(pairProduction == INT_MAX)
+            cout << "Your primary have not solution => -1!\n";
+        else if (minProduction >= 1 && minProduction < INT_MAX)
+            cout << "Min Production = " << minProduction << ".\n";
     }
-
-    if(pairProduction == INT_MAX)
-        cout << "Your primary have not solution => -1!\n";
-    else if (minProduction >= 1 && minProduction < LLONG_MAX)
-        cout << "Min Production = " << minProduction << ".\n";
+    else {
+        cout << "Your subsequence very short!";
+    }
 
     return 0;
 }
