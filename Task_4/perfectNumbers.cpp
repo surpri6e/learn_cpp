@@ -11,13 +11,14 @@ void print_vector_int(const vector<uint64_t> arr) {
 }
 
 int main() {
-
-    unsigned int limitPrimeNumber = 132050; //It is limit for find Mersenne prime numbers
-    uint8_t limitOfPerfectNumbers;
+    //If i will optimizate this algorithm be very good, but on that stage this algorithm very bad because better keep this perfect
+    //Numbers in uint64_t array than litter memory unnecessary variable and cycle
+    uint64_t indexOfArray = 0;
+    uint64_t limitOfPerfectNumbers;
+    uint64_t limitPrimeNumber = 132050; //It is limit for find Mersenne prime numbers
     uint64_t current = 0;
-    unsigned int digit = 2;
+    uint64_t digit = 2;
     uint64_t sumOfDigit = 0;
-    unsigned int indexOfArray = 0;
     cin >> limitOfPerfectNumbers;
     vector<uint64_t> arrayOfPerfectNumbers;
     vector<bool> isPrime(limitPrimeNumber + 1);
@@ -40,21 +41,20 @@ int main() {
     }
 
 
-    while(true) {
+    while(indexOfArray < limitOfPerfectNumbers) {
         current = pow(2, arrayOfPrimeNumbers[indexOfArray] - 1) * (pow(2, arrayOfPrimeNumbers[indexOfArray]) - 1);
-
-        while(digit * digit <= current) {
+        /*
+        while(digit <= sqrt(current)) {
             if (current % digit == 0) {
                 sumOfDigit += digit;
             }
+
             digit += 1;
         }
-
-        if (current == sumOfDigit)
-            arrayOfPerfectNumbers.push_back(current);
-
-        if(indexOfArray >= limitOfPerfectNumbers)
-            break;
+        */
+        cout << current << endl;
+        //if (current == sumOfDigit)
+        arrayOfPerfectNumbers.push_back(current);
 
         indexOfArray++;
     }
