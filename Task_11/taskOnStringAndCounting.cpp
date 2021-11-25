@@ -10,8 +10,15 @@ struct Person {
     string name;
     string lastName;
     int age;
-    int counter;
 };
+
+void print_vector(const vector<int> &arr) {
+    cout << "[" << arr[0];
+    for(int i = 1; i < arr.size(); i++) {
+        cout << "," << arr[i];
+    }
+    cout << "]" << endl;
+}
 
 int main() {
 
@@ -20,6 +27,7 @@ int main() {
     vector<int> arrayOfCounters(diapason);
     vector<Person> arrayOfPersons;
     int maxCounterVal = -1;
+    int maxCounterAge = -1;
 
     cout << "Enter your number which shows amount sequence: ";
     cin >> sequence;
@@ -38,21 +46,29 @@ int main() {
 
         assert(tmp.age >= 0 && tmp.age < diapason);
         arrayOfCounters[tmp.age]++;
-        for(int j = 0; j < arrayOfPersons.size(); j++) {
-            if(arrayOfCounters[tmp.age] > arrayOfPersons[i].counter && arrayOfPersons[i].age == tmp.age) {
-                arrayOfPersons[j].counter++;
-            }
-        }
     }
+
+    print_vector(arrayOfCounters);
 
     for(int i = 0; i < diapason; i++) {
         if(arrayOfCounters[i] > maxCounterVal) {
             maxCounterVal = arrayOfCounters[i];
+            maxCounterAge = i;
         }
     }
 
-    for(int i = 0; i < diapason; i++) {
-        if(maxCounterVal == arrayOfPersons[i].counter) {
+    cout << maxCounterAge << " --- " << maxCounterVal << endl;
+
+    // I think, this error bound with operator - cout. I must check this problem in video.
+    cout << arrayOfPersons[0].age << " " << arrayOfPersons[1].age << " " << arrayOfPersons[2] << endl; // Its
+
+    for(int i = 0; i < arrayOfPersons.size(); i++) {
+        // arrayOfCounters[i] == maxCounterVal
+        // maxCounterAge == arrayOfPersons[i].age
+        int age = arrayOfPersons[i].age;
+        cout << age << endl;
+
+        if(maxCounterAge == arrayOfPersons[i].age) {
             cout << arrayOfPersons[i].name << endl;
             cout << arrayOfPersons[i].lastName << endl;
         }
