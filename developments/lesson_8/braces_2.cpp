@@ -19,17 +19,22 @@ int main() {
     cin >> s;
 
     vector<char> stackChar;
+    bool isEmpty = false;
 
     for(char symbol: s) {
         if(symbol == '(' || symbol == '[') {
             stackChar.push_back(symbol);
+            isEmpty = true;
         }
+
         if(symbol == ')' || symbol == ']') {
-            if(stackChar.size() == 0) {
+            if(stackChar.empty()) {
                 cout << "This sequence is incorrect!";
                 break;
             }
+
             char lastSymbol = stackChar[stackChar.size() - 1];
+
             if(lastSymbol == '(' && symbol == ')') {
                 stackChar.pop_back();
                 continue;
@@ -42,17 +47,13 @@ int main() {
             } else if(lastSymbol == '[' && symbol == ')') {
                 cout << "This sequence is incorrect!";
                 break;
-            } else {
-                cout << "This sequence is incorrect!";
-                break;
             }
+
         }
     }
 
-    if(stackChar.size() == 0) {
+    if(stackChar.empty() && isEmpty) {
         cout << "This sequence is correct!";
-    } else {
-        cout << "This sequence is incorrect!";
     }
 
     return 0;
