@@ -5,7 +5,6 @@
 
 using namespace std;
 
-// гюбеярх мю назейре ябни янаярбеммши яв╗рвхй
 struct Person {
     string name;
     string lastName;
@@ -20,12 +19,16 @@ void print_vector(const vector<int> &arr) {
     cout << "]" << endl;
 }
 
+ostream& operator << (ostream &out, Person &tmp) {
+    out << "{Age: " << tmp.age << "}, ";
+    return out;
+}
+
 int main() {
 
     int sequence;
     const int diapason = 100;
     vector<int> arrayOfCounters(diapason);
-    vector<Person> arrayOfPersons;
     int maxCounterVal = -1;
     int maxCounterAge = -1;
 
@@ -33,6 +36,7 @@ int main() {
     cin >> sequence;
 
     sequence = (sequence > 0) ? sequence : (sequence < 0) ? -sequence : 5;
+    vector<Person> arrayOfPersons(sequence);
 
     for(int i = 0; i < sequence; i++) {
         Person tmp;
@@ -45,10 +49,9 @@ int main() {
         cin >> tmp.age;
 
         assert(tmp.age >= 0 && tmp.age < diapason);
+        arrayOfPersons[i] = tmp;
         arrayOfCounters[tmp.age]++;
     }
-
-    print_vector(arrayOfCounters);
 
     for(int i = 0; i < diapason; i++) {
         if(arrayOfCounters[i] > maxCounterVal) {
@@ -57,20 +60,13 @@ int main() {
         }
     }
 
-    cout << maxCounterAge << " --- " << maxCounterVal << endl;
-
     // I think, this error bound with operator - cout. I must check this problem in video.
-    cout << arrayOfPersons[0].age << " " << arrayOfPersons[1].age << " " << arrayOfPersons[2] << endl; // Its
 
     for(int i = 0; i < arrayOfPersons.size(); i++) {
-        // arrayOfCounters[i] == maxCounterVal
-        // maxCounterAge == arrayOfPersons[i].age
-        int age = arrayOfPersons[i].age;
-        cout << age << endl;
+        // cout << arrayOfPersons[i];
 
         if(maxCounterAge == arrayOfPersons[i].age) {
-            cout << arrayOfPersons[i].name << endl;
-            cout << arrayOfPersons[i].lastName << endl;
+            cout << "{Name: " << arrayOfPersons[i].name << ", lastName: " << arrayOfPersons[i].lastName << "}" << endl;
         }
     }
 
