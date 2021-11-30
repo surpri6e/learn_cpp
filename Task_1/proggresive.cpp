@@ -1,8 +1,23 @@
 #include <iostream>
-using namespace std;
+#include <vector>
+#include <cmath>
+#include <string>
+
+using std::vector;
+using std::string;
+using std::cout;
+using std::cin;
+using std::endl;
 
 int main() {
+    
+   string s;
+   cin >> s;
+   cout << s << endl;
+   
 
+
+	
     /*Данный код ищет разницу между текущим и последним элементов введенных с клавиатуры*/
     while (true) {
         int i;
