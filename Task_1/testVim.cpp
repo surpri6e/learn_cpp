@@ -20,7 +20,7 @@ void print_vector_names(const vector<string> &arr) {
 int main() {
 
  int sequence;
- cout << "Enter your size of sequence: " << endl;
+ cout << "Enter your size of sequence: ";
 
  sequence = (sequence > 0) ? sequence : (sequence < 0) ? -sequence : 3;
 
@@ -32,5 +32,5 @@ int main() {
   arrayOfNames[i] = name;
  }
 
- print_vector_names(arrayOfNAmes);
-}	
+ print_vector_names(arrayOfNames);
+}
