@@ -43,24 +43,24 @@ int main() {
  int arr_size;
  cout << "Enter size of your array: ";
  cin >> arr_size;
- 
+
  int counterZeroInArray = 0;
 
  arr_size = (arr_size > 0) ? arr_size : (arr_size < 0) ? -arr_size : 3;
 
  vector<int> arr(arr_size);
- 
+
  for(int i = 0; i < arr_size; i++) {
   arr[i] = generator(arr_size + i, 100);
  }
- 
+
  for(int i = 0; i < arr_size; i++) {
   if(arr[i] % 2 == 0) {
    arr[i] = 0;
   }
  }
 
- print_array(arr);
+ //print_array(arr);
 
  for(int i = 0; i < arr_size; i++) {
   if(arr[i] == 0) {
@@ -70,7 +70,7 @@ int main() {
 
  DeleteZero(counterZeroInArray, arr);
 
- print_array(arr);
+ //print_array(arr);
 
  return 0;
 }
